@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace VisualEditor
 {
-    public partial class Form1 : Form
+    public partial class VEform : Form
     {
-        public Form1()
+        public VEform()
         {
             InitializeComponent();
+        }
+
+        private void BlueButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }
