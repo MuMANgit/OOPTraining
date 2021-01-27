@@ -53,6 +53,7 @@ namespace VisualEditor
             this.pictureBox1.Size = new System.Drawing.Size(746, 416);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_Click);
             // 
             // CircleButton
@@ -64,6 +65,7 @@ namespace VisualEditor
             this.CircleButton.Size = new System.Drawing.Size(46, 38);
             this.CircleButton.TabIndex = 1;
             this.CircleButton.UseVisualStyleBackColor = true;
+            this.CircleButton.Click += new System.EventHandler(this.CircleButton_Click);
             // 
             // LineButton
             // 
@@ -73,6 +75,7 @@ namespace VisualEditor
             this.LineButton.Size = new System.Drawing.Size(46, 38);
             this.LineButton.TabIndex = 2;
             this.LineButton.UseVisualStyleBackColor = true;
+            this.LineButton.Click += new System.EventHandler(this.LineButton_Click);
             // 
             // SquareButton
             // 
@@ -84,6 +87,7 @@ namespace VisualEditor
             this.SquareButton.Size = new System.Drawing.Size(46, 38);
             this.SquareButton.TabIndex = 3;
             this.SquareButton.UseVisualStyleBackColor = false;
+            this.SquareButton.Click += new System.EventHandler(this.SquareButton_Click);
             // 
             // TriangleButton
             // 
@@ -93,6 +97,7 @@ namespace VisualEditor
             this.TriangleButton.Size = new System.Drawing.Size(46, 38);
             this.TriangleButton.TabIndex = 4;
             this.TriangleButton.UseVisualStyleBackColor = true;
+            this.TriangleButton.Click += new System.EventHandler(this.TriangleButton_Click);
             // 
             // BlueButton
             // 
@@ -152,6 +157,7 @@ namespace VisualEditor
             this.ClearButton.TabIndex = 10;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // VEform
             // 
