@@ -13,8 +13,9 @@ namespace VisualEditor
     public partial class VEform : Form
     {
         Figure figure;
-
+        
         List<Figure> figureList = new List<Figure>();
+        
         public VEform()
         {
             InitializeComponent();
@@ -22,28 +23,50 @@ namespace VisualEditor
 
         private void pictureBox1_Click(object sender, MouseEventArgs e)
         {
-            if (figure is Square)
+            int X = e.X;
+            int Y = e.Y;
+            bool check = true;
+            KeyPreview = true;
+
+
+            foreach (var f in figureList)
             {
-                figure = new Square(e.X, e.Y, 25, 25);    
+                if (f.InsideFigure(X, Y))
+                {
+                    f.BoldFigure();
+
+                    check = false;
+
+                    break;
+                }
             }
-            else if(figure is Circle)
+            
+            if (TriangleRadioButton.Checked)
             {
-                figure = new Circle(e.X, e.Y, 25, 25);   
+                figure = new Triangle(X, Y);
             }
-            else if(figure is Line)
+            else if (SquareRadioButton.Checked)
             {
-                figure = new Line(e.X, e.Y);
+                figure = new Square(X, Y);
             }
-            else if(figure is Triangle)
+            else if (RectangleRadioButton.Checked)
             {
-                figure = new Triangle(e.X, e.Y);
+                figure = new Rectangle(X, Y);
             }
-            else
+            else if (LineRadioButton.Checked)
             {
-                MessageBox.Show("Выберите Фигуру");
+                figure = new Line(X, Y);
+            }
+            else if (CircleRadioButton.Checked)
+            {
+                figure = new Circle(X, Y);
             }
 
-            figureList.Add(figure);
+            if (figure != null && check)
+            {
+                figureList.Add(figure);
+            }
+            
             Refresh();
         }
 
@@ -58,34 +81,116 @@ namespace VisualEditor
             }
         }
 
+        private void VEform_KeyDown(object sender, KeyEventArgs e)
+        {
+            foreach (var f in from f in figureList
+                              where f.Bold
+                              select f)
+            {
+                if (e.Control)
+                {
+                    switch (e.KeyCode)
+                    {
+                        case Keys.Up:
+                            f.MoveUp();
+                            break;
+
+                        case Keys.Right:
+                            f.MoveRight();
+                            break;
+
+                        case Keys.Down:
+                            f.MoveDown();
+                            break;
+
+                        case Keys.Left:
+                            f.MoveLeft();
+                            break;
+
+                        case Keys.OemMinus:
+                            f.Decrease();
+                            break;
+                        case Keys.Oemplus:
+                            f.Increase();
+                            break;
+                    }
+
+                }
+
+                Refresh();
+            }
+        }
+
+        private void YellowButton_Click(object sender, EventArgs e)
+        {
+            foreach (var f in figureList)
+            {
+                if (f.Bold)
+                {
+                    f.ChangeColor(Color.Yellow);
+                }
+            }
+
+            Refresh();
+        }
+
+        private void GreenButton_Click(object sender, EventArgs e)
+        {
+            foreach (var f in figureList)
+            {
+                if (f.Bold)
+                {
+                    f.ChangeColor(Color.Green);
+                }
+            }
+
+            Refresh();
+        }
+
+        private void RedButton_Click(object sender, EventArgs e)
+        {
+            foreach (var f in figureList)
+            {
+                if (f.Bold)
+                {
+                    f.ChangeColor(Color.Red);
+                }
+            }
+
+            Refresh();
+        }
+
+        private void BlackButton_Click(object sender, EventArgs e)
+        {
+            foreach (var f in figureList)
+            {
+                if (f.Bold)
+                {
+                    f.ChangeColor(Color.Black);
+                }
+            }
+
+            Refresh();
+        }
+
         private void BlueButton_Click(object sender, EventArgs e)
         {
+            foreach (var f in figureList)
+            {
+                if (f.Bold)
+                {
+                    f.ChangeColor(Color.Blue);
+                }
+            }
 
-        }
-
-        private void SquareButton_Click(object sender, EventArgs e)
-        {
-            figure = new Square();
-        }
-
-        private void CircleButton_Click(object sender, EventArgs e)
-        {
-            figure = new Circle();
-        }
-
-        private void LineButton_Click(object sender, EventArgs e)
-        {
-            figure = new Line();
-        }
-        private void TriangleButton_Click(object sender, EventArgs e)
-        {
-            figure = new Triangle();
+            Refresh();
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
             figureList.Clear();
+
             Refresh();
-        }   
+        }
     }
 }

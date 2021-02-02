@@ -9,20 +9,47 @@ namespace VisualEditor
 {
     class Circle : Figure
     {
-        public Circle()
+        public int Width { get; set; } = 60;
+        public int Height { get; set; } = 60;
+        
+        public Circle(int x, int y) : base(x, y)
         {
-
+           
         }
-        public Circle(int x, int y, int width, int height) : base(x, y)
-        {
-            Width = width;
-            Height = height;
-        }
+       
         public override void DrawYourself(Graphics g)
         {
-            Pen penPurple = new Pen(Color.Black, 2);
+            Pen pen = new Pen(_Color, 2);
+            Pen penBold = new Pen(_Color, 5);
 
-            g.DrawEllipse(penPurple, X - Width / 2, Y - Height / 2, Width, Height);
+            g.DrawEllipse(Bold ? penBold : pen, X - Width / 2, Y - Height / 2, Width, Height);
+        }
+        
+        public override bool InsideFigure(int x, int y)
+        {
+            if (x > X - Width / 2 && x < X + Width / 2 && y > Y - Width / 2 && y < Y + Width / 2)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public override void Decrease()
+        {
+            if (Width > 5 && Height > 5)
+            {
+                Width -= 5;
+                Height -= 5;
+            }
+        }
+
+        public override void Increase()
+        {
+            if (Width < 300 && Height < 300)
+            {
+                Width += 5;
+                Height += 5;
+            }
         }
     }
 }

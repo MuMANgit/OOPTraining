@@ -7,28 +7,28 @@ using System.Threading.Tasks;
 
 namespace VisualEditor
 {
-    class Line : Figure
+    class Rectangle : Figure
     {
-        public int Width { get; set; } = 60;
+        public int Width { get; set; } = 90;
+        public int Height { get; set; } = 60;
 
-        public Line(int x, int y) : base(x, y)
+        public Rectangle(int x, int y) : base(x, y)
         {
 
         }
+
         public override void DrawYourself(Graphics g)
         {
             Pen pen = new Pen(_Color, 2);
             Pen penBold = new Pen(_Color, 5);
 
-            g.DrawLine(Bold ? penBold : pen, X - Width / 2, Y, X + Width / 2, Y);
+            g.DrawRectangle(Bold ? penBold : pen, X - Width / 2, Y - Height / 2, Width, Height);
+            
         }
 
-        
         public override bool InsideFigure(int x, int y)
         {
-
-
-            if (x > X - Width / 2 && x < X + Width / 2 && y == Y)
+            if (x > X - Width / 2 && x < X + Width / 2 && y > Y - Height / 2 && y < Y + Height / 2)
             {
                 return true;
             }
@@ -37,17 +37,19 @@ namespace VisualEditor
 
         public override void Decrease()
         {
-            if (Width > 5)
+            if (Width > 5 && Height > 5)
             {
                 Width -= 5;
+                Height -= 5;
             }
         }
 
         public override void Increase()
         {
-            if (Width < 300)
+            if (Width < 300 && Height < 300)
             {
                 Width += 5;
+                Height += 5;
             }
         }
     }
