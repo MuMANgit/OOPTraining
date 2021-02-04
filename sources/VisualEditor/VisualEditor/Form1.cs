@@ -75,8 +75,12 @@ namespace VisualEditor
             Graphics g = e.Graphics;
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
+            int maxX = pictureBox1.ClientSize.Width;
+            int maxY = pictureBox1.ClientSize.Height;
+
             foreach (var figure in figureList)
             {
+                figure.BorderControl(maxX, maxY);
                 figure.DrawYourself(g);
             }
         }

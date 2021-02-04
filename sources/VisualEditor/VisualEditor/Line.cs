@@ -50,5 +50,27 @@ namespace VisualEditor
                 Width += 5;
             }
         }
+
+        public override void BorderControl(int maxX, int maxY)
+        {
+            int minX = 0;
+            int minY = 0;
+            if (X + Width / 2 > maxX)
+            {
+                X = maxX - Width / 2;
+            }
+            if (X - Width / 2 < minX)
+            {
+                X = minX + Width / 2;
+            }
+            if (Y > maxY)
+            {
+                Y = maxY;
+            }
+            if (Y < minY)
+            {
+                Y = minY;
+            }
+        }
     }
 }

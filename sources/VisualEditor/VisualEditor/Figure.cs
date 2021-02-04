@@ -30,6 +30,8 @@ namespace VisualEditor
 
         public abstract void Increase();
 
+        public abstract void BorderControl(int maxX, int maxY);
+
         public void BoldFigure()
         {
             Bold = !Bold;

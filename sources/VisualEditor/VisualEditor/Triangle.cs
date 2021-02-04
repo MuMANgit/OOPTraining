@@ -37,5 +37,10 @@ namespace VisualEditor
         {
             return false;
         }
+
+        public override void BorderControl(int maxX, int maxY)
+        {
+            
+        }
     }
 }
