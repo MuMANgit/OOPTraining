@@ -15,7 +15,7 @@ namespace VisualEditor
         Figure figure;
         
         List<Figure> figureList = new List<Figure>();
-        
+
         public VEform()
         {
             InitializeComponent();
@@ -25,9 +25,9 @@ namespace VisualEditor
         {
             int X = e.X;
             int Y = e.Y;
+
             bool check = true;
             KeyPreview = true;
-
 
             foreach (var f in figureList)
             {
@@ -40,7 +40,8 @@ namespace VisualEditor
                     break;
                 }
             }
-            
+
+
             if (TriangleRadioButton.Checked)
             {
                 figure = new Triangle(X, Y);
@@ -62,32 +63,35 @@ namespace VisualEditor
                 figure = new Circle(X, Y);
             }
 
+            
+
             if (figure != null && check)
             {
                 figureList.Add(figure);
             }
-            
+
             Refresh();
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-            Graphics g = e.Graphics;
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-
             int maxX = pictureBox1.ClientSize.Width;
             int maxY = pictureBox1.ClientSize.Height;
+
+            Graphics g = e.Graphics;
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
             foreach (var figure in figureList)
             {
                 figure.BorderControl(maxX, maxY);
-                figure.DrawYourself(g);
+
+                figure.DrawYourself(g);   
             }
         }
 
         private void VEform_KeyDown(object sender, KeyEventArgs e)
         {
-            foreach (var f in from f in figureList
+            foreach (var f in from f in figureList.ToArray()
                               where f.Bold
                               select f)
             {
@@ -117,6 +121,10 @@ namespace VisualEditor
                         case Keys.Oemplus:
                             f.Increase();
                             break;
+                        case Keys.Delete:
+                            figureList.Remove(f);
+                            break;
+
                     }
 
                 }
