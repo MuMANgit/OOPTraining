@@ -120,7 +120,7 @@ namespace VisualEditor
                                 break;
 
                             case Keys.OemMinus:
-                                f.Decrease(maxX, maxY);
+                                f.Decrease();
                                 break;
 
                             case Keys.Oemplus:

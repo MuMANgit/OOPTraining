@@ -46,7 +46,7 @@ namespace VisualEditor
             return false;
         }
 
-        public override void Decrease(int maxX, int maxY)
+        public override void Decrease()
         {
             if (Width > 5 && Height > 5)
             {

@@ -68,7 +68,7 @@ namespace VisualEditor
 
         public abstract void DrawYourself(Graphics g);
         public abstract bool InsideFigure(int x, int y);
-        public abstract void Decrease(int maxX, int maxY);
+        public abstract void Decrease();
         public abstract void Increase(int maxX, int maxY);
         public abstract void BorderControl(int maxX, int maxY);
         public abstract string FigureData();

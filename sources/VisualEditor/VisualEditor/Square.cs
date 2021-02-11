@@ -46,22 +46,22 @@ namespace VisualEditor
             return false;   
         }
 
-        public override void Decrease(int maxX, int maxY)
+        public override void Decrease()
         {
-            Width -= 5;
-            Height -= 5;
-
-            BorderControl(maxX, maxY);
+            if (Width > 5 && Height > 5)
+            {
+                Width -= 5;
+                Height -= 5;
+            }
         }
 
         public override void Increase(int maxX, int maxY)
         {
-            if ( X + Width / 2 < maxX && Y + Height / 2 < maxY)
+            if (X + Width / 2 < maxX && Y + Height / 2 < maxY && X - Width / 2 > 0 && Y - Height / 2 > 0)
             {
                 Width += 5;
                 Height += 5;
             }
-            //BorderControl(maxX, maxY);
         }
 
         public override void BorderControl(int maxX, int maxY)
