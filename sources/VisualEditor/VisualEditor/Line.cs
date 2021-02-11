@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace VisualEditor
 {
@@ -11,9 +12,19 @@ namespace VisualEditor
     {
         public int Width { get; set; } = 60;
 
+        public Line()
+        {
+
+        }
+
         public Line(int x, int y) : base(x, y)
         {
 
+        }
+
+        public Line(int x, int y, int width) : this(x, y)
+        {
+            Width = width;
         }
         public override void DrawYourself(Graphics g)
         {
@@ -23,7 +34,7 @@ namespace VisualEditor
             g.DrawLine(Bold ? penBold : pen, X - Width / 2, Y, X + Width / 2, Y);
         }
 
-        
+
         public override bool InsideFigure(int x, int y)
         {
 
@@ -35,20 +46,19 @@ namespace VisualEditor
             return false;
         }
 
-        public override void Decrease()
+        public override void Decrease(int maxX, int maxY)
         {
-            if (Width > 5)
-            {
-                Width -= 5;
-            }
+            Width -= 5;
+
+            BorderControl(maxX, maxY);
         }
 
-        public override void Increase()
+        public override void Increase(int maxX, int maxY)
         {
-            if (Width < 300)
-            {
-                Width += 5;
-            }
+
+            Width += 5;
+
+            BorderControl(maxX, maxY);
         }
 
         public override void BorderControl(int maxX, int maxY)
@@ -71,6 +81,21 @@ namespace VisualEditor
             {
                 Y = minY;
             }
+        }
+
+        public override string Save()
+        {
+            string data = $"Line, {X}, {Y}, {Width}, {_Color.ToArgb()}";
+
+            return data;
+        }
+
+        public override void Load(string[] dataLine)
+        {
+            X = int.Parse(dataLine[1]);
+            Y = int.Parse(dataLine[2]);
+            Width = int.Parse(dataLine[3]);
+            _Color = Color.FromArgb(int.Parse(dataLine[4]));
         }
     }
 }

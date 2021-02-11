@@ -29,101 +29,104 @@ namespace VisualEditor
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.BlueButton = new System.Windows.Forms.Button();
-            this.RedButton = new System.Windows.Forms.Button();
-            this.YellowButton = new System.Windows.Forms.Button();
-            this.GreenButton = new System.Windows.Forms.Button();
-            this.BlackButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
+            this.ColorButton = new System.Windows.Forms.Button();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CircleRadioButton = new System.Windows.Forms.RadioButton();
             this.SquareRadioButton = new System.Windows.Forms.RadioButton();
             this.RectangleRadioButton = new System.Windows.Forms.RadioButton();
-            this.TriangleRadioButton = new System.Windows.Forms.RadioButton();
+            this.EllipseRadioButton = new System.Windows.Forms.RadioButton();
             this.LineRadioButton = new System.Windows.Forms.RadioButton();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(-2, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(803, 402);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
-            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_Click);
-            // 
-            // BlueButton
-            // 
-            this.BlueButton.BackColor = System.Drawing.Color.Blue;
-            this.BlueButton.Location = new System.Drawing.Point(412, 408);
-            this.BlueButton.Name = "BlueButton";
-            this.BlueButton.Size = new System.Drawing.Size(46, 38);
-            this.BlueButton.TabIndex = 8;
-            this.BlueButton.UseVisualStyleBackColor = false;
-            this.BlueButton.Click += new System.EventHandler(this.BlueButton_Click);
-            // 
-            // RedButton
-            // 
-            this.RedButton.BackColor = System.Drawing.Color.Red;
-            this.RedButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.RedButton.Location = new System.Drawing.Point(516, 408);
-            this.RedButton.Name = "RedButton";
-            this.RedButton.Size = new System.Drawing.Size(46, 38);
-            this.RedButton.TabIndex = 7;
-            this.RedButton.UseVisualStyleBackColor = false;
-            this.RedButton.Click += new System.EventHandler(this.RedButton_Click);
-            // 
-            // YellowButton
-            // 
-            this.YellowButton.BackColor = System.Drawing.Color.Yellow;
-            this.YellowButton.Location = new System.Drawing.Point(360, 408);
-            this.YellowButton.Name = "YellowButton";
-            this.YellowButton.Size = new System.Drawing.Size(46, 38);
-            this.YellowButton.TabIndex = 6;
-            this.YellowButton.UseVisualStyleBackColor = false;
-            this.YellowButton.Click += new System.EventHandler(this.YellowButton_Click);
-            // 
-            // GreenButton
-            // 
-            this.GreenButton.BackColor = System.Drawing.Color.Lime;
-            this.GreenButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.GreenButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.GreenButton.Location = new System.Drawing.Point(464, 408);
-            this.GreenButton.Name = "GreenButton";
-            this.GreenButton.Size = new System.Drawing.Size(46, 38);
-            this.GreenButton.TabIndex = 5;
-            this.GreenButton.UseVisualStyleBackColor = false;
-            this.GreenButton.Click += new System.EventHandler(this.GreenButton_Click);
-            // 
-            // BlackButton
-            // 
-            this.BlackButton.BackColor = System.Drawing.Color.Black;
-            this.BlackButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BlackButton.Location = new System.Drawing.Point(568, 408);
-            this.BlackButton.Name = "BlackButton";
-            this.BlackButton.Size = new System.Drawing.Size(46, 38);
-            this.BlackButton.TabIndex = 9;
-            this.BlackButton.UseVisualStyleBackColor = false;
-            this.BlackButton.Click += new System.EventHandler(this.BlackButton_Click);
-            // 
             // ClearButton
             // 
-            this.ClearButton.Location = new System.Drawing.Point(620, 414);
+            this.ClearButton.Location = new System.Drawing.Point(714, 1);
             this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(168, 25);
+            this.ClearButton.Size = new System.Drawing.Size(86, 23);
             this.ClearButton.TabIndex = 10;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
             this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
+            // ColorButton
+            // 
+            this.ColorButton.Location = new System.Drawing.Point(622, 1);
+            this.ColorButton.Name = "ColorButton";
+            this.ColorButton.Size = new System.Drawing.Size(86, 23);
+            this.ColorButton.TabIndex = 16;
+            this.ColorButton.Text = "Choose Color";
+            this.ColorButton.UseVisualStyleBackColor = true;
+            this.ColorButton.Click += new System.EventHandler(this.ButtonColor_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.файлToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 17;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // файлToolStripMenuItem
+            // 
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripMenuItem,
+            this.loadToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.файлToolStripMenuItem.Text = "File";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
+            // 
+            // loadToolStripMenuItem
+            // 
+            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Text = "Open";
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 24);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(800, 426);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
+            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_Click);
+            // 
             // CircleRadioButton
             // 
             this.CircleRadioButton.AutoSize = true;
-            this.CircleRadioButton.Location = new System.Drawing.Point(12, 422);
+            this.CircleRadioButton.Location = new System.Drawing.Point(300, 4);
             this.CircleRadioButton.Name = "CircleRadioButton";
             this.CircleRadioButton.Size = new System.Drawing.Size(51, 17);
             this.CircleRadioButton.TabIndex = 11;
@@ -134,7 +137,7 @@ namespace VisualEditor
             // SquareRadioButton
             // 
             this.SquareRadioButton.AutoSize = true;
-            this.SquareRadioButton.Location = new System.Drawing.Point(69, 422);
+            this.SquareRadioButton.Location = new System.Drawing.Point(357, 4);
             this.SquareRadioButton.Name = "SquareRadioButton";
             this.SquareRadioButton.Size = new System.Drawing.Size(59, 17);
             this.SquareRadioButton.TabIndex = 12;
@@ -145,7 +148,7 @@ namespace VisualEditor
             // RectangleRadioButton
             // 
             this.RectangleRadioButton.AutoSize = true;
-            this.RectangleRadioButton.Location = new System.Drawing.Point(134, 422);
+            this.RectangleRadioButton.Location = new System.Drawing.Point(422, 4);
             this.RectangleRadioButton.Name = "RectangleRadioButton";
             this.RectangleRadioButton.Size = new System.Drawing.Size(74, 17);
             this.RectangleRadioButton.TabIndex = 13;
@@ -153,21 +156,21 @@ namespace VisualEditor
             this.RectangleRadioButton.Text = "Rectangle";
             this.RectangleRadioButton.UseVisualStyleBackColor = true;
             // 
-            // TriangleRadioButton
+            // EllipseRadioButton
             // 
-            this.TriangleRadioButton.AutoSize = true;
-            this.TriangleRadioButton.Location = new System.Drawing.Point(214, 422);
-            this.TriangleRadioButton.Name = "TriangleRadioButton";
-            this.TriangleRadioButton.Size = new System.Drawing.Size(63, 17);
-            this.TriangleRadioButton.TabIndex = 14;
-            this.TriangleRadioButton.TabStop = true;
-            this.TriangleRadioButton.Text = "Triangle";
-            this.TriangleRadioButton.UseVisualStyleBackColor = true;
+            this.EllipseRadioButton.AutoSize = true;
+            this.EllipseRadioButton.Location = new System.Drawing.Point(502, 4);
+            this.EllipseRadioButton.Name = "EllipseRadioButton";
+            this.EllipseRadioButton.Size = new System.Drawing.Size(55, 17);
+            this.EllipseRadioButton.TabIndex = 14;
+            this.EllipseRadioButton.TabStop = true;
+            this.EllipseRadioButton.Text = "Ellipse";
+            this.EllipseRadioButton.UseVisualStyleBackColor = true;
             // 
             // LineRadioButton
             // 
             this.LineRadioButton.AutoSize = true;
-            this.LineRadioButton.Location = new System.Drawing.Point(283, 422);
+            this.LineRadioButton.Location = new System.Drawing.Point(571, 4);
             this.LineRadioButton.Name = "LineRadioButton";
             this.LineRadioButton.Size = new System.Drawing.Size(45, 17);
             this.LineRadioButton.TabIndex = 15;
@@ -175,31 +178,34 @@ namespace VisualEditor
             this.LineRadioButton.Text = "Line";
             this.LineRadioButton.UseVisualStyleBackColor = true;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // VEform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ColorButton);
             this.Controls.Add(this.LineRadioButton);
-            this.Controls.Add(this.TriangleRadioButton);
+            this.Controls.Add(this.EllipseRadioButton);
             this.Controls.Add(this.RectangleRadioButton);
             this.Controls.Add(this.SquareRadioButton);
             this.Controls.Add(this.CircleRadioButton);
             this.Controls.Add(this.ClearButton);
-            this.Controls.Add(this.BlackButton);
-            this.Controls.Add(this.BlueButton);
-            this.Controls.Add(this.RedButton);
-            this.Controls.Add(this.YellowButton);
-            this.Controls.Add(this.GreenButton);
             this.Controls.Add(this.pictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "VEform";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "VisualEditor";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.VEform_KeyDown);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -207,19 +213,22 @@ namespace VisualEditor
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button BlueButton;
-        private System.Windows.Forms.Button RedButton;
-        private System.Windows.Forms.Button YellowButton;
-        private System.Windows.Forms.Button GreenButton;
-        private System.Windows.Forms.Button BlackButton;
         private System.Windows.Forms.Button ClearButton;
+        private System.Windows.Forms.Button ColorButton;
+        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.RadioButton CircleRadioButton;
         private System.Windows.Forms.RadioButton SquareRadioButton;
         private System.Windows.Forms.RadioButton RectangleRadioButton;
-        private System.Windows.Forms.RadioButton TriangleRadioButton;
+        private System.Windows.Forms.RadioButton EllipseRadioButton;
         private System.Windows.Forms.RadioButton LineRadioButton;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

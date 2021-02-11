@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace VisualEditor
 {
@@ -11,12 +12,23 @@ namespace VisualEditor
     {
         public int Width { get; set; } = 60;
         public int Height { get; set; } = 60;
+
+        public Circle()
+        {
+
+        }
         
         public Circle(int x, int y) : base(x, y)
         {
            
         }
-       
+
+        public Circle(int x, int y, int width, int height) : this(x, y)
+        {
+            Width = width;
+            Height = height;
+        }
+
         public override void DrawYourself(Graphics g)
         {
             Pen pen = new Pen(_Color, 2);
@@ -34,22 +46,20 @@ namespace VisualEditor
             return false;
         }
 
-        public override void Decrease()
+        public override void Decrease(int maxX, int maxY)
         {
-            if (Width > 5 && Height > 5)
-            {
-                Width -= 5;
-                Height -= 5;
-            }
+            Width -= 5;
+            Height -= 5;
+
+            BorderControl(maxX, maxY);
         }
 
-        public override void Increase()
+        public override void Increase(int maxX, int maxY)
         {
-            if (Width < 300 && Height < 300)
-            {
-                Width += 5;
-                Height += 5;
-            }
+            Width += 5;
+            Height += 5;
+
+            BorderControl(maxX, maxY);
         }
 
         public override void BorderControl(int maxX, int maxY)
@@ -73,6 +83,21 @@ namespace VisualEditor
             {
                 Y = minY + Height / 2;
             }
+        }
+        public override string Save()
+        {
+            string data = $"Circle, {X}, {Y}, {Width}, {Height}, {_Color.ToArgb()}";
+
+            return data;
+        }
+
+        public override void Load(string[] dataLine)
+        {
+            X = int.Parse(dataLine[1]);
+            Y = int.Parse(dataLine[2]);
+            Width = int.Parse(dataLine[3]);
+            Height = int.Parse(dataLine[4]);
+            _Color = Color.FromArgb(int.Parse(dataLine[5]));
         }
     }
 }

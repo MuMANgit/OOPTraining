@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.IO;
 
 namespace VisualEditor
 {
@@ -12,10 +13,20 @@ namespace VisualEditor
     {
         public int Width { get; set; } = 60;
         public int Height { get; set; } = 60;
+        public Square()
+        {
+
+        }
 
         public Square(int x, int y) : base(x, y)
         {
            
+        }
+
+        public Square(int x, int y, int width, int height) : this(x, y)
+        {
+            Width = width;
+            Height = height;
         }
 
         public override void DrawYourself(Graphics g)
@@ -35,22 +46,22 @@ namespace VisualEditor
             return false;   
         }
 
-        public override void Decrease()
+        public override void Decrease(int maxX, int maxY)
         {
-            if (Width > 5 && Height > 5)
-            {
-                Width -= 5;
-                Height -= 5;
-            }
+            Width -= 5;
+            Height -= 5;
+
+            BorderControl(maxX, maxY);
         }
 
-        public override void Increase()
+        public override void Increase(int maxX, int maxY)
         {
-            if (Width < 300 && Height < 300)
+            if ( X + Width / 2 < maxX && Y + Height / 2 < maxY)
             {
                 Width += 5;
                 Height += 5;
             }
+            //BorderControl(maxX, maxY);
         }
 
         public override void BorderControl(int maxX, int maxY)
@@ -62,18 +73,38 @@ namespace VisualEditor
             {
                 X = maxX - Width / 2;
             }
-            if(X - Width / 2 < minX)
+
+            if (X - Width / 2 < minX)
             {
                 X = minX + Width / 2;
             }
+
             if (Y + Height / 2 > maxY)
             {
                 Y = maxY - Height / 2;
             }
+
             if (Y - Height / 2 < minY)
             {
                 Y = minY + Height / 2;
             }
+        }
+
+        public override string Save()
+        {
+            string data = $"Square, {X}, {Y}, {Width}, {Height}, {_Color.ToArgb()}";
+
+            return data;
+        }
+
+        public override void Load(string[] dataLine)
+        {
+            X = int.Parse(dataLine[1]);
+            Y = int.Parse(dataLine[2]);
+            Width = int.Parse(dataLine[3]);
+            Height = int.Parse(dataLine[4]);
+            _Color = Color.FromArgb(int.Parse(dataLine[5]));
+
         }
     }
 }

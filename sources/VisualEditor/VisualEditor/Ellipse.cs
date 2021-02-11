@@ -1,28 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace VisualEditor
 {
-    class Rectangle : Figure
+    class Ellipse : Figure
     {
-        public int Width { get; set; } = 90;
+        public int Width { get; set; } = 120;
         public int Height { get; set; } = 60;
-        public Rectangle()
+
+        public Ellipse()
         {
 
         }
 
-        public Rectangle(int x, int y) : base(x, y)
+        public Ellipse(int x, int y) : base(x, y)
         {
 
         }
 
-        public Rectangle(int x, int y, int width, int height) : this(x, y)
+        public Ellipse(int x, int y, int width, int height) : this(x, y)
         {
             Width = width;
             Height = height;
@@ -33,13 +34,12 @@ namespace VisualEditor
             Pen pen = new Pen(_Color, 2);
             Pen penBold = new Pen(_Color, 5);
 
-            g.DrawRectangle(Bold ? penBold : pen, X - Width / 2, Y - Height / 2, Width, Height);
-            
+            g.DrawEllipse(Bold ? penBold : pen, X - Width / 2, Y - Height / 2, Width, Height);
         }
 
         public override bool InsideFigure(int x, int y)
         {
-            if (x > X - Width / 2 && x < X + Width / 2 && y > Y - Height / 2 && y < Y + Height / 2)
+            if (x > X - Width / 2 && x < X + Width / 2 && y > Y - Width / 2 && y < Y + Width / 2)
             {
                 return true;
             }
@@ -86,7 +86,7 @@ namespace VisualEditor
         }
         public override string Save()
         {
-            string data = $"Rectangle,{X},{Y},{Width},{Height},{_Color.ToArgb()}";
+            string data = $"Ellipse, {X}, {Y}, {Width}, {Height}, {_Color.ToArgb()}";
 
             return data;
         }

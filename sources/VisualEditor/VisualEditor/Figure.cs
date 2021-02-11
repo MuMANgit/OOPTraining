@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.IO;
 
 
 namespace VisualEditor
@@ -16,21 +17,16 @@ namespace VisualEditor
         public Color _Color { get; set; } = Color.Black;
 
         public bool Bold { get; set; } = false;
+        public Figure()
+        {
+
+        }
        
         public Figure(int x, int y)
         {
             X = x;
             Y = y;   
         }
-
-        public abstract void DrawYourself(Graphics g);
-        public abstract bool InsideFigure(int x, int y);
-
-        public abstract void Decrease();
-
-        public abstract void Increase();
-
-        public abstract void BorderControl(int maxX, int maxY);
 
         public void BoldFigure()
         {
@@ -42,25 +38,40 @@ namespace VisualEditor
             _Color = color;
         }
 
-        public void MoveLeft()
+        public void MoveLeft(int maxX, int maxY)
         {
             X -= 10;
+
+            BorderControl(maxX, maxY);
         }
 
-        public void MoveUp()
+        public void MoveUp(int maxX, int maxY)
         {
             Y -= 10;
+
+            BorderControl(maxX, maxY);
         }
 
-        public void MoveDown()
+        public void MoveDown(int maxX, int maxY)
         {
             Y += 10;
+
+            BorderControl(maxX, maxY);
         }
 
-        public void MoveRight()
+        public void MoveRight(int maxX, int maxY)
         {
             X += 10;
+
+            BorderControl(maxX, maxY);
         }
 
+        public abstract void DrawYourself(Graphics g);
+        public abstract bool InsideFigure(int x, int y);
+        public abstract void Decrease(int maxX, int maxY);
+        public abstract void Increase(int maxX, int maxY);
+        public abstract void BorderControl(int maxX, int maxY);
+        public abstract string Save();
+        public abstract void Load(string[] data);
     }
 }
