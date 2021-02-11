@@ -20,6 +20,7 @@ namespace VisualEditor
         public VEform()
         {
             InitializeComponent();
+
             openFileDialog1.Filter = "Text files(*.fgr)|*.fgr";
             saveFileDialog1.Filter = "Text files(*.fgr)|*.fgr";
         }
@@ -171,7 +172,7 @@ namespace VisualEditor
             {
                 Name = saveFileDialog1.FileName;
 
-                File.WriteAllLines(Name, Save());
+                File.WriteAllLines(Name, FigureDataArr());
             }
         }
 
@@ -224,7 +225,7 @@ namespace VisualEditor
             }
         }
 
-        private string[] Save()
+        private string[] FigureDataArr()
         {
             int length = figureList.Count();
 
@@ -232,7 +233,7 @@ namespace VisualEditor
 
             for (int i = 0; i < figureList.Count; i++)
             {
-                figureData[i] = figureList[i].Save();
+                figureData[i] = figureList[i].FigureData();
             }
 
             return figureData;

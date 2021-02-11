@@ -84,7 +84,7 @@ namespace VisualEditor
                 Y = minY + Height / 2;
             }
         }
-        public override string Save()
+        public override string FigureData()
         {
             string data = $"Rectangle,{X},{Y},{Width},{Height},{_Color.ToArgb()}";
 

@@ -71,7 +71,7 @@ namespace VisualEditor
         public abstract void Decrease(int maxX, int maxY);
         public abstract void Increase(int maxX, int maxY);
         public abstract void BorderControl(int maxX, int maxY);
-        public abstract string Save();
+        public abstract string FigureData();
         public abstract void Load(string[] data);
     }
 }
