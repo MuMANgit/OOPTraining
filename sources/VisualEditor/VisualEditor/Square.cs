@@ -90,7 +90,7 @@ namespace VisualEditor
             }
         }
 
-        public override string Save()
+        public override string FigureData()
         {
             string data = $"Square, {X}, {Y}, {Width}, {Height}, {_Color.ToArgb()}";
 
