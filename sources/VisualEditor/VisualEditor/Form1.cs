@@ -148,7 +148,7 @@ namespace VisualEditor
 
         private void ButtonColor_Click(object sender, EventArgs e)
         {
-            if (colorDialog1.ShowDialog() != System.Windows.Forms.DialogResult.Cancel)
+            if (colorDialog1.ShowDialog() != DialogResult.Cancel)
             {
                 foreach (var f in figureList)
                 {
@@ -170,9 +170,9 @@ namespace VisualEditor
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                Name = saveFileDialog1.FileName;
+                string path= saveFileDialog1.FileName;
 
-                File.WriteAllLines(Name, FigureDataArr());
+                File.WriteAllLines(path, FigureDataArr());
             }
         }
 
@@ -180,9 +180,9 @@ namespace VisualEditor
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                Name = openFileDialog1.FileName;
+                string path = openFileDialog1.FileName;
 
-                using (StreamReader sr = new StreamReader(Name, System.Text.Encoding.UTF8))
+                using (StreamReader sr = new StreamReader(path, Encoding.UTF8))
                 {
                     string line;
 

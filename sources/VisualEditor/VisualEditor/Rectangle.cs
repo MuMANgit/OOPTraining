@@ -58,7 +58,7 @@ namespace VisualEditor
         {
             Width += 5;
             Height += 5;
-
+            
             BorderControl(maxX, maxY);
         }
 
