@@ -180,6 +180,8 @@ namespace VisualEditor
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                figureList.Clear();
+
                 string path = openFileDialog1.FileName;
 
                 using (StreamReader sr = new StreamReader(path, Encoding.UTF8))
