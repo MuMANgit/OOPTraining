@@ -1,1 +1,2 @@
-OOPTraining
+Training project.
+Technologies: WebForms
